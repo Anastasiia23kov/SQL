@@ -1,59 +1,55 @@
-use Lesson_1;
+USE Lesson_1;
 
-create table if not exists teacher
+CREATE TABLE IF NOT EXISTS teacher
 (
-teacher_id int primary key auto_increment,
-name varchar(50),
-post varchar(50)
+teacher_id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(50),
+post VARCHAR(50)
 );
 
-insert into teacher (name, post) values 
+INSERT INTO teacher (name, post) VALUES 
 ('Смит', 'Профессор'),
 ('Адамс', 'Ассистент');
 
-select * from teacher;
+SELECT * FROM teacher;
 
-create table if not exists student
+CREATE TABLE IF NOT EXISTS student
 (
-student_id int primary key auto_increment,
-name varchar(50),
-course_name varchar(50),
-email varchar(50),
-phone_number varchar(50)
+student_id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(50),
+course_name VARCHAR(50),
+email VARCHAR(50),
+phone_number VARCHAR(50)
 );
 
-insert into student (name, course_name, email, phone_number) values 
+INSERT INTO student (name, course_name, email, phone_number) VALUES 
 ('Том', 'Математика', 'tom@tom.com', '983-2842-22'),
 ('Сэм', 'Математика', 'sem@tom.com', '983-4342-22'),
 ('Bob', 'Алгоритмы', 'bob@tom.com', '393-2842-22');
 
-select * from student;
+SELECT * FROM student;
 
-create table if not exists course
+CREATE TABLE IF NOT EXISTS course
 (
-name varchar(50),
-student_name varchar(50),
-teacher_name varchar(50)
+name VARCHAR(50),
+student_name VARCHAR(50),
+teacher_name VARCHAR(50)
 );
 
-insert into course(name, student_name, teacher_name) values 
+INSERT INTO course(name, student_name, teacher_name) VALUES 
 ('Математика', 'Том', 'Смит'), 
 ('Математика', 'Сэм', 'Смит'), 
 ('Алгоритмы', 'Боб', 'Адамс');
 
 
-select * from student;
+SELECT * FROM student;
 
-select * from student
-where name = 'Сэм';
+SELECT * FROM student
+WHERE name = 'Сэм';
 
-select name, course_name
-from student;
+SELECT name, course_name
+FROM student;
 
-select *
-from student
-where name like 'B%'; 
-
-
-
-
+SELECT *
+FROM student
+WHERE name LIKE 'B%'; 
