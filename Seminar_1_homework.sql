@@ -3,17 +3,17 @@ USE Seminar_1_homework;
 # 1. Создайте таблицу с мобильными телефонами, используя 
 # графический интерфейс. Заполните БД данными.
 
-create table if not exists phones
+CREATE TABLE IF NOT EXISTS phones
 (
-Id int primary key auto_increment,
-ProductName varchar(50),
-Manufacturer varchar(50),
-ProductCount int,
-Price int
+Id INT PRIMARY KEY AUTO_INCREMENT,
+ProductName VARCHAR(50),
+Manufacturer VARCHAR(50),
+ProductCount INT,
+Price INT
 );
 
-insert into phones (ProductName, Manufacturer, ProductCount, Price)
-values
+INSERT INTO phones (ProductName, Manufacturer, ProductCount, Price)
+VALUES
 ('iPhone X', 'Apple', '3', '76000'),
 ('iPhone 8', 'Apple', '2', '51000'),
 ('Galaxy S9', 'Samsung', '2', '56000'),
