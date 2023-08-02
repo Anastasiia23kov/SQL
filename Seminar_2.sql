@@ -2,9 +2,10 @@ CREATE DATABASE Seminar_2;
 
 USE Seminar_2;
 
-drop table if exists films; 
-CREATE TABLE films (
-	film_id INT PRIMARY KEY AUTO_INCREMENT,
+DROP TABLE IF EXISTS films; 
+CREATE TABLE films 
+(
+    film_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     year YEAR NOT NULL,
     length INT NOT NULL,
@@ -60,8 +61,6 @@ DROP TABLE cinema;
 ALTER TABLE cinema
 ADD FOREIGN KEY(producer_id) REFERENCES producer(Id);
 
-
-
 /*
 Задача 3. В зависимости от поля “grade”, 
 установите еще один столбец с именем class в зависимости от значений класса.
@@ -70,13 +69,13 @@ C+ – THIRD CLASS, ALL OTHERS – FAIL
 */
 
 SELECT class,
-  CASE 
-	WHEN grade = 'A++' THEN 'DISTINCTION'
-	WHEN grade = 'A+' THEN 'FIRST CLASS'
-    WHEN grade = 'A' or grade = 'B+' THEN 'SECOND CLASS'
+CASE 
+    WHEN grade = 'A++' THEN 'DISTINCTION'
+    WHEN grade = 'A+' THEN 'FIRST CLASS'
+    WHEN grade = 'A' OR grade = 'B+' THEN 'SECOND CLASS'
     WHEN grade = 'C+' THEN 'THIRD CLASS'
-  ELSE 'FAIL'
-  end as class
+    ELSE 'FAIL'
+END AS class
 FROM table_name;
 
 /* Задача 4. 
@@ -89,14 +88,15 @@ Total_marks от 300 до 350 – «ТРЕТИЙ КЛАСС»
 В противном случае - НЕУДАЧА
 */
 
-select *, CASE
-		WHEN total_marks > 450 THEN 'ПЕРВЫЙ КЛАСС С ОТЛИЧИЕМ'
-        WHEN total_marks between 400 AND  450 THEN 'ПЕРВЫЙ КЛАСС'
-        WHEN total_marks between 350 and 399 THEN 'ВТОРОЙ КЛАСС'
-        WHEN total_marks between 300 AND 349  THEN 'ТРЕТИЙ КЛАСС'
-        ELSE 'НЕУДАЧА'
-        END as class
-        from studentmarks;
+select *, 
+CASE
+    WHEN total_marks > 450 THEN 'ПЕРВЫЙ КЛАСС С ОТЛИЧИЕМ'
+    WHEN total_marks BETWEEN 400 AND  450 THEN 'ПЕРВЫЙ КЛАСС'
+    WHEN total_marks BETWEEN 350 AND 399 THEN 'ВТОРОЙ КЛАСС'
+    WHEN total_marks BETWEEN 300 AND 349  THEN 'ТРЕТИЙ КЛАСС'
+    ELSE 'НЕУДАЧА'
+END as class
+FROM studentmarks;
 
 /*
 Задача 5. 
@@ -116,11 +116,13 @@ SELECT IF (100<200, 'yes', 'no')
 */
 
 SELECT *
-	IF (total_marks > 450, 'Отлично', 'Хорошо') as result
+    IF (total_marks > 450, 'Отлично', 'Хорошо') AS RESULT
 FROM students_marks;
 
+
+# в 'неверно' прописывается 2ой IF
 SELECT
-	IF (total_marks > 450, 'Отлично', 'Хорошо', 
-    IF (total_marks > 400, 'Хорошо', 'Удовлетворительно')) as result
+    IF (total_marks > 450, 'Отлично', 
+    IF (total_marks > 400, 'Хорошо', 'Удовлетворительно')) AS RESULT
 FROM students_marks;
 
